@@ -59,6 +59,10 @@ For the 10 seconds of audio, the key values we will see in this assignment are:
 #### 함수 get_random_time_segment(segment_ms)
 random time segment를 반환한다.
 
+- 만약 이전에 삽입한 segment와 겹치면 어떻게 하나?
+	- ```is_overlapping(segment_time, previous_segments)``` 를 통해 확인한다.
+
+
 
 
 
