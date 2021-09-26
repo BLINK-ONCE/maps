@@ -1,2 +1,3 @@
 - [빅스비 스튜디오. 대중교통 관련 예제.](https://www.secmem.org/blog/2020/08/19/Bixby-Studio/)
 - [tistory. 5분 만에 음성 인식 구현하기. speech recognition.](https://wdprogrammer.tistory.com/38)
+- [youtube. nstalling Pyaudio Without Errors in Anaconda and Also creating Speech to Text Code with Python😊](https://youtu.be/Fu9wnuHVLCM)
