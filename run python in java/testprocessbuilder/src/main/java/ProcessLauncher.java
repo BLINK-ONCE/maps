@@ -1,35 +1,39 @@
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.exec.CommandLine;
+import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.PumpStreamHandler;
+
 public class ProcessLauncher {
     public static void main(String[] args) throws IOException, InterruptedException {
-        List<String> list = new ArrayList<>();
-        list.add("C:\\Users\\pc\\Desktop\\git-repos\\maps\\run python in java");
-        list.add("C:\\Users\\pc\\Desktop\\git-repos\\maps\\run python in java\\SpeechRecognitionGoogleAPI.py");
+        System.out.println("Python call");
+        String[] command = new String[2];
+        command[0] = "python";
+        command[1] = "C:/Users/pc/Desktop/git-repos/maps/run python in java/SpeechRecognitionGoogleAPI.py";
 
-        ProcessBuilder processBuilder = new ProcessBuilder(list);
+        try {
+            execPython(command);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-        processBuilder.directory(new File("C:\\Users\\pc\\Desktop\\git-repos\\maps\\run python in java\\"));
-        System.out.println("command: " + processBuilder.command());
+    public static void execPython(String[] command) throws IOException, InterruptedException {
+        CommandLine commandLine = CommandLine.parse(command[0]);
+        for (int i = 1, n = command.length; i < n; i++) {
+            commandLine.addArgument(command[i]);
+        }
 
-        /*ProcessBuilder processBuilder = new ProcessBuilder(
-                "C:\\Users\\pc\\Desktop\\git-repos\\maps\\run python in java\\SpeechRecognitionGoogleAPI.py");
-        processBuilder.redirectOutput(ProcessBuilder.Redirect.INHERIT);
-        processBuilder.redirectError(ProcessBuilder.Redirect.INHERIT);
-        processBuilder.redirectInput(ProcessBuilder.Redirect.INHERIT);
-        Process process = processBuilder.start();
-        process.waitFor();*/
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PumpStreamHandler pumpStreamHandler = new PumpStreamHandler(outputStream);
+        DefaultExecutor executor = new DefaultExecutor();
+        executor.setStreamHandler(pumpStreamHandler);
+        int result = executor.execute(commandLine);
+        System.out.println("result: " + result);
+        System.out.println("output: " + outputStream.toString());
     }
 }
-
-/*class ProcessBuilderTest {
-    ProcessBuilder builder = new ProcessBuilder();
-    String homeDir = "C:\\Users\\pc\\Desktop\\git-repos\\maps\\run python in java\\";
-    String process = "SpeechRecognitionGoogleAPI";
-
-    builder.command("cmd.exe","/c","homeDir");
-
-    builder.directory(new File(System.getProperty("homeDir")))
-}*/
