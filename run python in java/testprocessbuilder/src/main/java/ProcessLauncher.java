@@ -11,11 +11,9 @@ import org.apache.commons.exec.PumpStreamHandler;
 public class ProcessLauncher {
     public static void main(String[] args) throws IOException, InterruptedException {
         System.out.println("Python call");
-        String[] command = new String[4];
+        String[] command = new String[2];
         command[0] = "python";
-        command[1] = "C:/Users/pc/Desktop/git-repos/maps/run python in java/test.py";
-        command[2] = "10";
-        command[3] = "20";
+        command[1] = "C:/Users/pc/Desktop/git-repos/maps/run python in java/SpeechRecognitionGoogleAPI.py";
 
         try {
             execPython(command);
@@ -34,8 +32,8 @@ public class ProcessLauncher {
         PumpStreamHandler pumpStreamHandler = new PumpStreamHandler(outputStream);
         DefaultExecutor executor = new DefaultExecutor();
         executor.setStreamHandler(pumpStreamHandler);
-        int result = executor.execute(commandLine);
-        System.out.println("result: " + result);
+        //int result = executor.execute(commandLine);
+        //System.out.println("result: " + result);
         System.out.println("output: " + outputStream.toString());
     }
 }
