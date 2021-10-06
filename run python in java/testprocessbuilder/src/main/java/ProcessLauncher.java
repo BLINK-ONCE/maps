@@ -11,9 +11,10 @@ import org.apache.commons.exec.PumpStreamHandler;
 public class ProcessLauncher {
     public static void main(String[] args) throws IOException, InterruptedException {
         System.out.println("Python call");
-        String[] command = new String[2];
+        String[] command = new String[3];
         command[0] = "python";
         command[1] = "C:/Users/pc/Desktop/git-repos/maps/run python in java/SpeechRecognitionGoogleAPI.py";
+        command[2] = "맵피";
 
         try {
             execPython(command);
