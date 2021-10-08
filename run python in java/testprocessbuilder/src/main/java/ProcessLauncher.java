@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.PumpStreamHandler;
+import sun.font.TrueTypeFont;
 
 public class ProcessLauncher {
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -17,10 +18,17 @@ public class ProcessLauncher {
         command[2] = "10";
         command[3] = "20";
 
-        try {
-            execPython(command);
-        } catch (Exception e) {
-            e.printStackTrace();
+        int i = 0;
+        while (true) {
+            try {
+                execPython(command);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            i++;
+            if (i > 10) {
+                break;
+            }
         }
     }
 
