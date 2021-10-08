@@ -35,8 +35,7 @@ public class ProcessLauncher {
         DefaultExecutor executor = new DefaultExecutor();
         executor.setStreamHandler(pumpStreamHandler);
         int result = executor.execute(commandLine);
-        System.out.println("result: " + result);
-
+        //System.out.println("result: " + result);
         String output = outputStream.toString();
         System.out.println("output: " + output);
         if ("1".equals(output.substring(0,1))) {
