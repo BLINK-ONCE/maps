@@ -9,22 +9,17 @@ def launch():
     text = ''
     trigger = False
     triggerWord = "맵피"
-    
-    while(True):
-        with sr.Microphone() as source:
-            print(0)
-            audio = r.listen(source)
-            try:
-                text = r.recognize_google(audio, language='ko-KR')
-                print(0)
-            except:
-                print(-1)
 
-        if triggerWord in text:
-            trigger = True
-            print(1)
-            time.sleep(3)
-            break
+    with ar.Microphone() as source:
+        audio = r.listen(source)
+        try:
+            text = r.recognize_google(audio, language='ko-KR')
+        except:
+            print(-1)
+    if triggerWord in text:
+        trigger = True
+        print(1)
+        break
 
 def main(argv):
     launch()
