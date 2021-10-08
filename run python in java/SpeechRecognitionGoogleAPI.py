@@ -5,12 +5,11 @@ import speech_recognition as sr
 r = sr.Recognizer()
 
 def launch():
-    time.sleep(3)
     text = ''
     trigger = False
     triggerWord = "맵피"
 
-    with ar.Microphone() as source:
+    with sr.Microphone() as source:
         audio = r.listen(source)
         try:
             text = r.recognize_google(audio, language='ko-KR')
@@ -19,7 +18,6 @@ def launch():
     if triggerWord in text:
         trigger = True
         print(1)
-        break
 
 def main(argv):
     launch()
