@@ -6,24 +6,30 @@ import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.PumpStreamHandler;
 
 public class ProcessLauncher {
+    private boolean trigger;
 
     public ProcessLauncher() {
-
+        trigger = false;
     }
 
     public boolean run() throws IOException {
         System.out.println("===== Python call =====");
-        boolean trigger = false;
         PythonScriptCommand pythonScriptCommand = new PythonScriptCommand();
 
-        while (!trigger) {
+        try {
+            trigger = execPython(pythonScriptCommand);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        /*while (!trigger) {
             try {
                 trigger = execPython(pythonScriptCommand);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             //System.out.println("trigger: " + trigger); // use when you want to check trigger works
-        }
+        }*/
 
         return trigger;
     }

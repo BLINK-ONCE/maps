@@ -7,4 +7,5 @@
 - [ ] Capsule method
 - Catch errors
   - [ ] catch error where outputStream.toString() hasn't length
+  - [x] 
 - [ ] Make project to work modularity
