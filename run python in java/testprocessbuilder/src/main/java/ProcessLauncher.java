@@ -7,6 +7,16 @@ import org.apache.commons.exec.PumpStreamHandler;
 
 public class ProcessLauncher {
     public static void main(String[] args) throws IOException, InterruptedException {
+        ProcessLauncher processLauncher = new ProcessLauncher();
+        processLauncher.run();
+
+    }
+
+    public ProcessLauncher() {
+
+    }
+
+    public void run() throws IOException {
         System.out.println("Python call");
         boolean trigger = false;
         String[] command = new String[2];
@@ -21,10 +31,9 @@ public class ProcessLauncher {
             }
             System.out.println("trigger: " + trigger);
         }
-
     }
 
-    public static boolean execPython(String[] command) throws IOException, InterruptedException {
+    public boolean execPython(String[] command) throws IOException, InterruptedException {
         CommandLine commandLine = CommandLine.parse(command[0]);
         for (int i = 1, n = command.length; i < n; i++) {
             commandLine.addArgument(command[i]);
